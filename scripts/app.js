@@ -36,7 +36,8 @@
     cardTemplate: document.querySelector('.cardTemplate'),
     container: document.querySelector('.main'),
     addDialog: document.querySelector('.dialog-container'),
-    daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    hasRequestPending: false
   };
 
   app.saveSelectedCities = function () {
@@ -158,7 +159,24 @@
     var url = 'https://publicdata-weather.firebaseio.com/';
     url += key + '.json';
     // Make the XHR to get the data, then update the card
+
+    if ('caches' in window) {
+      caches.match(url).then(function (response) {
+        if (response) {
+          response.json().then(function (json) {
+            if (app.hasRequestPending) {
+              consola.log('updated from cache');
+              json.key = key;
+              json.label = label;
+              app.updateForecastCard(json);
+            }
+          });
+        }
+      });
+    }
+
     var request = new XMLHttpRequest();
+    app.hasRequestPending = true;
     request.onreadystatechange = function () {
       if (request.readyState === XMLHttpRequest.DONE) {
         if (request.status === 200) {
@@ -228,7 +246,7 @@
     ];
     app.saveSelectedCities();
   }
-  
+
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js')
             .then(function () {
