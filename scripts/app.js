@@ -165,7 +165,7 @@
         if (response) {
           response.json().then(function (json) {
             if (app.hasRequestPending) {
-              consola.log('updated from cache');
+              console.log('updated from cache');
               json.key = key;
               json.label = label;
               app.updateForecastCard(json);
