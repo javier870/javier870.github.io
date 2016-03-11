@@ -27,7 +27,7 @@
       ]
     }
   };
-
+  
   var app = {
     isLoading: true,
     visibleCards: {},
