@@ -5,6 +5,8 @@
  */
 
 var cacheName = "weatherPWA-step-5-1";
+var dataCacheName = "weatherData-v1";
+
 var filesToCache = [
   '/',
   '/index.html',
@@ -40,14 +42,12 @@ self.addEventListener('activate', function (e) {
           caches.keys().then(function (keylist) {
     return Promise.all(keylist.map(function (key) {
       console.log('[ServiceWorker] Removing old cache');
-      if (key !== cacheName) {
+      if (key !== cacheName && key !== dataCacheName) {
         return cache.delete(key);
       }
     }));
   }));
 });
-
-var dataCacheName = "weatherData-v1";
 
 self.addEventListener('fetch', function (e) {
   console.log('[ServiceWorker] Fetch', e.request.url);
