@@ -27,7 +27,7 @@
       ]
     }
   };
-  
+
   var app = {
     isLoading: true,
     visibleCards: {},
@@ -250,7 +250,10 @@
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js')
             .then(function () {
-              console.log('Service Worker Registred');
-            });
+              console.log('Service Worker Registred with scope: ', registration.scope);
+            }).catch(function (err) {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+    ;
   }
 })();
