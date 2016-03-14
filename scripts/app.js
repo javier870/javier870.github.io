@@ -254,6 +254,5 @@
             }).catch(function (err) {
       console.log('ServiceWorker registration failed: ', err);
     });
-    ;
   }
 })();
