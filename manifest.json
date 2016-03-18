@@ -29,7 +29,7 @@
     }
   ],
   "start_url": "/index.html",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "landscape",
   "background_color": "blue",
   "theme_color": "#333333"
