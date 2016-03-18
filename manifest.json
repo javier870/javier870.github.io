@@ -31,6 +31,6 @@
   "start_url": "/index.html",
   "display": "fullscreen",
   "orientation": "landscape",
-  "theme_color": "yellow",
+  "theme_color": "#333333",
   "background_color": "blue"
 }
