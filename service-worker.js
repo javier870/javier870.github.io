@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-var cacheName = "weatherPWA-step-5-1";
+var cacheName = "weatherPWA-step-5-2";
 var dataCacheName = "weatherData-v1";
 
 var filesToCache = [
@@ -26,6 +26,11 @@ var filesToCache = [
   '/images/snow.png',
   '/images/thunderstorm.png',
   '/images/wind.png',
+  '/images/icons/icon-128x128.png',
+  '/images/icons/icon-144x144.png',
+  '/images/icons/icon-152x152.png',
+  '/images/touch/icon-192x192.png',
+  '/images/touch/icon-256x256.png',
 ];
 
 self.addEventListener('install', function (e) {
